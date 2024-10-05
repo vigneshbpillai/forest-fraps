@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forest - Vignesh pillai</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a-scene physics="gravity: -9.8">
+      <!-- VR -->
+      <a-entity 
+        id="player" 
+        camera 
+        wasd-controls 
+        position="0 1.6 0" 
+        dynamic-body
+        look-controls>
+      </a-entity>
+
+      <!-- ground -->
+      <a-entity geometry="primitive: plane; width: 100; height: 100; segmentsWidth: 30; segmentsHeight: 30"
+                position="0 0 0" 
+                rotation="-90 0 0" 
+                material="color: #228B22; wireframe: false"
+                id="uneven-ground"
+                static-body>
+      </a-entity>
+
+      <!-- Sky -->
+      <a-sky color="#87CEEB"></a-sky>
+
+      <!-- Trees  -->
+      <a-entity id="trees"></a-entity>
+
+       <!-- Horse -->
+       <a-entity id="animal1" position="5 0 -5">
+        <a-box position="0 1.2 0" width="1.2" height="1.6" depth="0.6" color="#8B4513"></a-box> <!-- Body -->
+        <a-box position="0.6 2.1 -0.15" width="0.4" height="0.4" depth="0.4" color="#A52A2A"></a-box> <!-- Head -->
+        <a-cylinder position="0.6 2.3 -0.15" radius="0.08" height="0.3" color="#000"></a-cylinder> <!-- Neck -->
+        <a-box position="-0.6 0.6 0.3" width="0.2" height="0.6" depth="0.2" color="#8B4513"></a-box> <!-- Left Front Leg -->
+        <a-box position="0.6 0.6 0.3" width="0.2" height="0.6" depth="0.2" color="#8B4513"></a-box> <!-- Right Front Leg -->
+        <a-box position="-0.6 0.6 -0.3" width="0.2" height="0.6" depth="0.2" color="#8B4513"></a-box> <!-- Left Back Leg -->
+        <a-box position="0.6 0.6 -0.3" width="0.2" height="0.6" depth="0.2" color="#8B4513"></a-box> <!-- Right Back Leg -->
+        <a-cone position="0.6 2.35 0.1" radius-bottom="0.07" radius-top="0.02" height="0.3" color="#A52A2A"></a-cone> <!-- Ear -->
+        <a-cone position="0.5 2.35 -0.2" radius-bottom="0.07" radius-top="0.02" height="0.3" color="#A52A2A"></a-cone> <!-- Ear -->
+      </a-entity>
+
+      <!-- Turtle -->
+      <a-entity id="animal2" position="-10 0 -10">
+        <a-sphere position="0 0.3 0" radius="0.5" color="#556B2F"></a-sphere> <!-- Shell -->
+        <a-box position="-0.5 0.2 0" width="0.1" height="0.1" depth="0.4" color="#8B4513"></a-box> <!-- Left Leg -->
+        <a-box position="0.5 0.2 0" width="0.1" height="0.1" depth="0.4" color="#8B4513"></a-box> <!-- Right Leg -->
+        <a-box position="0 0.2 0.5" width="0.4" height="0.1" depth="0.1" color="#8B4513"></a-box> <!-- Front Leg -->
+        <a-box position="0 0.2 -0.5" width="0.4" height="0.1" depth="0.1" color="#8B4513"></a-box> <!-- Back Leg -->
+        <a-sphere position="0.1 0.3 0.6" radius="0.2" color="#8B4513"></a-sphere> <!-- Head -->
+      </a-entity>
+
+      <!-- Bird -->
+      <a-entity id="animal3" position="12 0 -8">
+        <a-sphere position="0 1 0" radius="0.3" color="#FFD700"></a-sphere> <!-- Body -->
+        <a-sphere position="0 1.2 0.3" radius="0.2" color="#FFD700"></a-sphere> <!-- Head -->
+        <a-cone position="0 1.2 0.45" radius-bottom="0.05" radius-top="0" height="0.1" color="#FF8C00"></a-cone> <!-- Beak -->
+        <a-box position="-0.3 1 0" width="0.02" height="0.2" depth="0.6" color="#FFD700"></a-box> <!-- Left Wing -->
+        <a-box position="0.3 1 0" width="0.02" height="0.2" depth="0.6" color="#FFD700"></a-box> <!-- Right Wing -->
+      </a-entity>
+
+      <!-- Snake -->
+      <a-entity id="animal4" position="-8 0 -15">
+        <a-cylinder position="0 0.2 0" radius="0.2" height="0.1" color="#006400"></a-cylinder> <!-- Body Segment 1 -->
+        <a-cylinder position="0.2 0.2 -0.5" radius="0.2" height="0.1" color="#006400"></a-cylinder> <!-- Body Segment 2 -->
+        <a-cylinder position="-0.2 0.2 -1" radius="0.2" height="0.1" color="#006400"></a-cylinder> <!-- Body Segment 3 -->
+        <a-cylinder position="0.2 0.2 -1.5" radius="0.2" height="0.1" color="#006400"></a-cylinder> <!-- Body Segment 4 -->
+        <a-sphere position="0.2 0.3 -1.8" radius="0.2" color="#006400"></a-sphere> <!-- Head -->
+        <a-cone position="0.2 0.3 -1.9" radius-bottom="0.05" radius-top="0" height="0.1" color="#FF0000"></a-cone> <!-- Tongue -->
+      </a-entity>
+
+       <!-- Elephant -->
+       <a-entity id="elephant" position="-10 0 -20">
+        <a-box position="0 1.5 0" width="2" height="1.5" depth="4" color="#696969"></a-box> <!-- Body -->
+        <a-sphere position="0 2.2 2.5" radius="0.8" color="#696969"></a-sphere> <!-- Head -->
+        <a-cylinder position="0 1.2 3.8" radius="0.3" height="1.8" color="#696969"></a-cylinder> <!-- Trunk -->
+        <a-box position="0.7 0.8 1.8" width="0.6" height="0.8" depth="0.2" color="#696969"></a-box> <!-- Left Ear -->
+        <a-box position="-0.7 0.8 1.8" width="0.6" height="0.8" depth="0.2" color="#696969"></a-box> <!-- Right Ear -->
+        <a-box position="0.7 0.5 1" width="0.3" height="1" depth="0.3" color="#696969"></a-box> <!-- Left Front Leg -->
+        <a-box position="-0.7 0.5 1" width="0.3" height="1" depth="0.3" color="#696969"></a-box> <!-- Right Front Leg -->
+        <a-box position="0.7 0.5 -1" width="0.3" height="1" depth="0.3" color="#696969"></a-box> <!-- Left Back Leg -->
+        <a-box position="-0.7 0.5 -1" width="0.3" height="1" depth="0.3" color="#696969"></a-box> <!-- Right Back Leg -->
+      </a-entity>
+
+      <!-- Giraffe -->
+      <a-entity id="giraffe" position="15 0 -25">
+        <a-cylinder position="0 3.5 0" radius="0.5" height="6" color="#DAA520"></a-cylinder> <!-- Neck -->
+        <a-box position="0 1.2 0" width="1.2" height="1" depth="2" color="#DAA520"></a-box> <!-- Body -->
+        <a-sphere position="0 6 0" radius="0.7" color="#DAA520"></a-sphere> <!-- Head -->
+        <a-box position="0.5 0.5 1" width="0.3" height="1" depth="0.3" color="#DAA520"></a-box> <!-- Left Front Leg -->
+        <a-box position="-0.5 0.5 1" width="0.3" height="1" depth="0.3" color="#DAA520"></a-box> <!-- Right Front Leg -->
+        <a-box position="0.5 0.5 -1" width="0.3" height="1" depth="0.3" color="#DAA520"></a-box> <!-- Left Back Leg -->
+        <a-box position="-0.5 0.5 -1" width="0.3" height="1" depth="0.3" color="#DAA520"></a-box> <!-- Right Back Leg -->
+        <a-cone position="0.2 6.4 0" radius-bottom="0.08" radius-top="0.02" height="0.4" color="#8B4513"></a-cone> <!-- Left Ear -->
+        <a-cone position="-0.2 6.4 0" radius-bottom="0.08" radius-top="0.02" height="0.4" color="#8B4513"></a-cone> <!-- Right Ear -->
+      </a-entity>
+
+      <!-- Rhino -->
+      <a-entity id="rhino" position="-20 0 -30">
+        <a-box position="0 1 0" width="1.5" height="1.2" depth="3" color="#A9A9A9"></a-box> <!-- Body -->
+        <a-sphere position="0 1.8 1.5" radius="0.6" color="#A9A9A9"></a-sphere> <!-- Head -->
+        <a-cylinder position="0 1.5 2" radius="0.1" height="0.6" color="#A9A9A9"></a-cylinder> <!-- Horn -->
+        <a-box position="0.6 0.6 1" width="0.3" height="0.8" depth="0.3" color="#A9A9A9"></a-box> <!-- Left Front Leg -->
+        <a-box position="-0.6 0.6 1" width="0.3" height="0.8" depth="0.3" color="#A9A9A9"></a-box> <!-- Right Front Leg -->
+        <a-box position="0.6 0.6 -1" width="0.3" height="0.8" depth="0.3" color="#A9A9A9"></a-box> <!-- Left Back Leg -->
+        <a-box position="-0.6 0.6 -1" width="0.3" height="0.8" depth="0.3" color="#A9A9A9"></a-box> <!-- Right Back Leg -->
+      </a-entity>
+
+    
+
+    <script>
+      function createTree(x, z) {
+        const tree = document.createElement('a-entity');
+        
+        const trunk = document.createElement('a-cylinder');
+        trunk.setAttribute('position', `${x} 1 ${z}`);
+        trunk.setAttribute('radius', '0.5');
+        trunk.setAttribute('height', '3');
+        trunk.setAttribute('color', '#8B4513');
+        
+        const foliage = document.createElement('a-sphere');
+        foliage.setAttribute('position', `${x} 3.5 ${z}`);
+        foliage.setAttribute('radius', '2');
+        foliage.setAttribute('color', '#228B22');
+        
+        tree.appendChild(trunk);
+        tree.appendChild(foliage);
+        
+        return tree;
+      }
+
+      const trees = document.getElementById('trees');
+      const treePositions = [
+        {x: 5, z: 5},   
+        {x: -10, z: 10}, 
+        {x: 10, z: -15},
+        {x: -15, z: -20},
+        {x: 20, z: 5},
+        {x: -25, z: -10},
+        {x: 15, z: 15},
+        {x: -30, z: -5},
+        {x: 25, z: -25},
+        {x: -20, z: 20}
+      ];
+
+      treePositions.forEach(pos => {
+        const tree = createTree(pos.x, pos.z);
+        trees.appendChild(tree);
+      });
+
+      const ground = document.querySelector('#uneven-ground');
+      ground.addEventListener('loaded', function() {
+        const mesh = ground.getObject3D('mesh');
+        const positions = mesh.geometry.attributes.position.array;
+
+        for (let i = 0; i < positions.length; i += 3) {
+          const randomHeight = Math.random() * 1.5; 
+          positions[i + 2] += randomHeight;
+        }
+        
+        mesh.geometry.attributes.position.needsUpdate = true;
+        mesh.geometry.computeVertexNormals();
+      });
+    </script>
+  </body>
+</html>
